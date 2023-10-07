@@ -3,7 +3,8 @@
 
 ## Install Notebook
 
-https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup%20_reconnect2023.json
+download notebook [magic_lookup_reconnect2023.json](https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup%20_reconnect2023.json)
+
 
 
 ## Question
