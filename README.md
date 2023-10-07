@@ -5,8 +5,9 @@
 
 download notebook [magic_lookup_reconnect2023.json](https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup%20_reconnect2023.json)  
 
-[myFile.js]({{'https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup%20_reconnect2023.json'}})  
+[myFile.js]({'https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup%20_reconnect2023.json'})  
 
+<a id="raw-url" href="https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup%20_reconnect2023.json">Download FILE</a>
 
 ## Question
 1) Calculate the delay payment
