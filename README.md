@@ -5,7 +5,7 @@
 
 ![image](https://github.com/JLLormeau/magic_lookup_reconnect2023/assets/40337213/bd703ab3-f146-47ce-a5df-b1a9e0e58cd0)
 
-Copy paste this URL dirctly in your upload : 
+Copy paste this URL directly in your upload : 
   
     https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup%20_reconnect2023.json  
 
