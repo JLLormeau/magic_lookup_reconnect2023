@@ -1,4 +1,4 @@
-# LAB - Magic Lookup
+# DEMO - Automate Business Analitycs with DQL Lookup command
 ![Delay_payment](https://github.com/JLLormeau/reconnect2023/blob/main/delay_payment.png?raw=true)
 
 ## Upload Notebook
