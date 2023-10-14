@@ -1,4 +1,4 @@
-# DEMO - Automate Business Analitycs with DQL Lookup command
+# Automate Business Analitycs with DQL Lookup command
 ![Delay_payment](https://github.com/JLLormeau/reconnect2023/blob/main/delay_payment.png?raw=true)
 
 ## Upload Notebook
@@ -10,14 +10,14 @@ Copy paste this URL directly in your upload :
     https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup%20_reconnect2023.json  
 
 
-## Question
-1) Calculate the delay payment  
+## DEMO in 3 steps 
+1) Calculate the payment delay  
 
 - With 2 lookups through 3 datasources  
 
 3) Calculate the SLO   
 
-- Objectif : 99% of delay payment < 6m on default period  
+- Objectif : 99% of payment delay < 6m on default period  
 
 3) Create the workflow  
 
