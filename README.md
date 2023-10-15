@@ -7,7 +7,7 @@
 
 Copy paste this URL directly in your upload : 
   
-    https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup%20_reconnect2023.json  
+    https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup_reconnect2023.json  
 
 
 ## DEMO in 3 steps 
