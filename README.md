@@ -24,5 +24,9 @@ Copy paste this URL directly in your upload :
 
 - If SLO is not successful  
 Send the result on the webhook.site  
-Ingest the values on your tenant.  
-![image](https://github.com/JLLormeau/magic_lookup_reconnect2023/assets/40337213/97715d42-c287-4cf5-9360-b20a9a14cdd9)
+Ingest the values on your tenant.
+
+## Workflow result 
+Copy paste this URL directly in your upload : 
+  
+    https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/wf_magic_lookup_reconnect2023.json
