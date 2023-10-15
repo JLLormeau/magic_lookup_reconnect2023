@@ -3,7 +3,7 @@
 
 ## Upload Notebook
 
-![image](https://github.com/JLLormeau/magic_lookup_reconnect2023/assets/40337213/bd703ab3-f146-47ce-a5df-b1a9e0e58cd0)
+![image](https://github.com/JLLormeau/magic_lookup_reconnect2023/assets/40337213/f9bd3c17-d6f9-47b7-b9fd-fa933fdda872)
 
 Copy paste this URL directly in your upload : 
   
