@@ -1,0 +1,69 @@
+{
+  "title": "magic_lookup_reconnect2023",
+  "description": "",
+  "tasks": {
+    "http_request_1": {
+      "name": "http_request_1",
+      "description": "Issue an HTTP request to any API",
+      "action": "dynatrace.automations:http-function",
+      "input": {
+        "url": "https://webhook.site/40ecea0e-1d0c-4172-9dbf-278f77ed57a6",
+        "method": "POST",
+        "payload": "{\n\"name\": \"your name\",\n\"SLO_success\": \"{{ result(\"execute_dql_query_1\").records[0].SLO_success }}\",  \n\"SLO\": \"{{ result(\"execute_dql_query_1\").records[0].SLO }}\",  \n\"target\": \"{{ result(\"execute_dql_query_1\").records[0].target }}\",  \n\"nbr_failed\": \"{{ result(\"execute_dql_query_1\").records[0].nbr_failed }}\"  \n}"
+      },
+      "position": {
+        "x": 0,
+        "y": 2
+      },
+      "predecessors": [
+        "execute_dql_query_1"
+      ],
+      "conditions": {
+        "states": {
+          "execute_dql_query_1": "OK"
+        },
+        "custom": "{{ result(\"execute_dql_query_1\").records[0].SLO_success == False }}"
+      }
+    },
+    "run_javascript_1": {
+      "name": "run_javascript_1",
+      "description": "Build a custom task running js Code",
+      "action": "dynatrace.automations:run-javascript",
+      "input": {
+        "script": "// optional import of sdk modules\nimport { execution } from '@dynatrace-sdk/automation-utils';\nimport { executionsClient } from '@dynatrace-sdk/client-automation';\n\n//https://developer.dynatrace.com/reference/sdks/client-classic-environment-v2/\nimport { metricsClient } from \"@dynatrace-sdk/client-classic-environment-v2\";\nexport default async function ({ execution_id }) {\n     // your code goes here\n     // e.g. get the current execution\n     const ex = await execution(execution_id);\n     console.log('Automated script execution on behalf of', ex.trigger);\n     //console.log(ex)\n     var previous_task={executionId: execution_id, id: 'execute_dql_query_1'}\n     var get_dql_result= await executionsClient.getTaskExecutionResult(previous_task)\n     const total = await metricsClient.ingest({\n        body: \"magiclookup.payment_delay.total \"+get_dql_result.records[0].total,\n     });\n     const failed = await metricsClient.ingest({\n        body: \"magiclookup.payment_delay.failed \"+get_dql_result.records[0].nbr_failed,\n     });\n     return { triggeredBy: ex.trigger };\n}"
+      },
+      "position": {
+        "x": -1,
+        "y": 2
+      },
+      "predecessors": [
+        "execute_dql_query_1"
+      ],
+      "conditions": {
+        "states": {
+          "execute_dql_query_1": "OK"
+        },
+        "custom": "{{ result(\"execute_dql_query_1\").records!= [] }}"
+      }
+    },
+    "execute_dql_query_1": {
+      "name": "execute_dql_query_1",
+      "description": "Executes DQL query",
+      "action": "dynatrace.automations:execute-dql-query",
+      "input": {
+        "query": "//file1\ndata \n    record(timestamp=now()-45m, log.source=\"file1\", content=\"betID=BET_20231019160000, start_time=20231019160000986, winners=65\"),\n    record(timestamp=now()-30m, log.source=\"file1\", content=\"betID=BET_20231019161501, start_time=20231019161501986, winners=47\"),\n    record(timestamp=now()-15m, log.source=\"file1\", content=\"betID=BET_20231019163101, start_time=20231019163101986, winners=118\")\n| parse content,\"'betID=' WORD:betID ', start_time='TIMESTAMP('yyyyMMddHHmmssSSS'):start_time ', winners='INT:nbr_winners\"\n| lookup[\n        //lookup2\n        //file2\n        data \n            record(timestamp=now()-43m, log.source=\"file2\", content=\"betID=BET_20231019160000, runID=2023101900045\"),\n            record(timestamp=now()-28m, log.source=\"file2\", content=\"betID=BET_20231019161501, runID=2023101900055\"),\n            record(timestamp=now()-12m, log.source=\"file2\", content=\"betID=BET_20231019163101, runID=2023101900065\")\n        | parse content,\"'betID=' WORD:betID ', runID=' WORD:runID\"\n        | fields timestamp, betID, runID\n        | lookup[\n                //file3\n                data \n                    record(timestamp=now()-41m, log.source=\"file3\", content=\"runID=2023101900045, end_time=2023/10/19 16:01:30\"),\n                    record(timestamp=now()-26m, log.source=\"file3\", content=\"runID=2023101900055, end_time=2023/10/19 16:18:00\"),\n                    record(timestamp=now()-10m, log.source=\"file3\", content=\"runID=2023101900065, end_time=2023/10/19 16:38:30\")\n                | parse content,\"'runID=' WORD:runID ', end_time='TIMESTAMP('yyyy/MM/d HH:mm:ss'):end_time\"\n                ], sourceField: runID, lookupField: runID, fields:{end_time}\n        //end of lookup2\n        ], sourceField:betID, lookupField:betID, fields:{runID, end_time}\n| fields start_time, betID, runID, payment_delay=(end_time - start_time)\n//SLO Calulation\n| summarize nbr_failed=countIf(payment_delay > 6m), total=count()\n| fieldsAdd SLO=(toDouble(total - nbr_failed) * 100 / total), target=99\n| fields SLO, target, SLO_success = if((SLO < target),false, else: true), nbr_failed, total\n"
+      },
+      "position": {
+        "x": 0,
+        "y": 1
+      },
+      "predecessors": []
+    }
+  },
+  "actor": "55eb9e8c-cf6b-4f40-9117-980c18bb1706",
+  "owner": "55eb9e8c-cf6b-4f40-9117-980c18bb1706",
+  "ownerType": "USER",
+  "isPrivate": true,
+  "trigger": {},
+  "schemaVersion": 3
+}
