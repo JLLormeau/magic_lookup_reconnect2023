@@ -26,7 +26,7 @@ Copy paste this URL directly in your upload :
 Send the result on the webhook.site  
 Ingest the values on your tenant.
 
-## Workflow result 
+## Workflow : soultion 
 Copy paste this URL directly in your upload : 
   
     https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/wf_magic_lookup_reconnect2023.json
