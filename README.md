@@ -13,7 +13,7 @@
 
 3) Calculate the SLO   
 
-- Objectif : 99% of payment delay < 6m on default period  
+- Objectif : 99% of payment delay < 6 min on default period  
 
 3) Create the workflow  
 
