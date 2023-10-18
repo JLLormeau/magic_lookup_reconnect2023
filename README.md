@@ -1,5 +1,4 @@
 # Automate business analitycs with DQL lookup command
-![Delay_payment](https://github.com/JLLormeau/reconnect2023/blob/main/payment_delay.png?raw=true)
 
 ## Upload Notebook
 
