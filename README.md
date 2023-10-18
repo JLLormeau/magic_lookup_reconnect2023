@@ -1,11 +1,7 @@
 # Automate business analitycs with DQL lookup command
+![Payment_delay](https://github.com/JLLormeau/reconnect2023/blob/main/payment_delay.png?raw=true)
 
 ## Upload Notebook
-
-![image](https://github.com/JLLormeau/magic_lookup_reconnect2023/assets/40337213/7885af9c-ed87-46f2-a5b4-d2f37e87c7a1)
-
-
-Copy paste this URL directly in your upload : 
   
     https://raw.githubusercontent.com/JLLormeau/magic_lookup_reconnect2023/main/magic_lookup_reconnect2023.json  
 
